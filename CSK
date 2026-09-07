@@ -1,0 +1,57 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+
+# Load data
+df = pd.read_csv("customer_data.csv")
+
+# Select features
+X = df[['AnnualIncome',
+        'SpendingScore',
+        'PurchaseFrequency']]
+
+# Scale data
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Build KMeans Model
+kmeans = KMeans(
+    n_clusters=4,
+    random_state=42,
+    n_init=10
+)
+
+df['Cluster'] = kmeans.fit_predict(X_scaled)
+
+# Results
+print(df[['CustomerID','Cluster']])
+
+# Visualization
+plt.figure(figsize=(8,6))
+
+scatter = plt.scatter(
+    df['AnnualIncome'],
+    df['SpendingScore'],
+    c=df['Cluster'],
+    cmap='viridis',
+    s=100
+)
+
+plt.title("Customer Segmentation")
+plt.xlabel("Annual Income")
+plt.ylabel("Spending Score")
+
+plt.colorbar(scatter)
+plt.show()
+
+# Segment Summary
+summary = df.groupby('Cluster')[[
+    'AnnualIncome',
+    'SpendingScore',
+    'PurchaseFrequency'
+]].mean()
+
+print("\nSegment Summary:")
+print(summary)
