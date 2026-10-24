@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+01_customer_segments.png
+02_segment_size.png
+03_income.png
+04_spending_score.png
+05_purchase_frequency.png
+06_heatmap.png
+07_distribution.png
+customer_segmentation_report.csv
+customer_segmentation_results.csv
