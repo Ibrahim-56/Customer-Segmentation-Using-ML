@@ -1,3 +1,5 @@
+[![CI](https://github.com/Ibrahim-56/Customer-Segmentation-Using-ML/actions/workflows/tests.yml/badge.svg)](https://github.com/Ibrahim-56/Customer-Segmentation-Using-ML/actions/workflows/tests.yml)
+
 # Customer Segmentation Using Machine Learning
 
 A Python analysis that applies K-Means clustering to customer income, spending score, and purchase frequency, then summarizes the resulting segments for marketing analysis.
